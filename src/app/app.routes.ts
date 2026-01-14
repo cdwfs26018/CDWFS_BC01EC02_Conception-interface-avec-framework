@@ -26,7 +26,7 @@ export const routes: Routes = [
   {
     path: 'catalogue',
     loadComponent: () =>
-      import('./pages/catalogue/catalogue')
+      import('./_pages/catalogue/catalogue')
         .then(m => m.Catalogue),
   },
   // {
