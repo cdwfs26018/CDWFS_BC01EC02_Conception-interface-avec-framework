@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import {authGuard} from './guards/auth-guard';
 import {ProductComponent} from './_pages/product/product';
+import {orderModeGuard} from './guards/order-mode.guard';
 
 export const routes: Routes = [
   {
@@ -11,7 +12,7 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () =>
-      import('./_pages/home/home').then(m => m.Home)
+      import('./_pages/home/home').then(m => m.Home),
   },
   {
     path: 'login',
@@ -22,28 +23,31 @@ export const routes: Routes = [
     path: 'account',
     loadComponent: () =>
       import('./_pages/account/account').then(m => m.Account),
-    canActivate: [authGuard]
   },
   {
     path: 'catalogue',
+    canActivate: [orderModeGuard],
     loadComponent: () =>
       import('./_pages/catalogue/catalogue')
         .then(m => m.Catalogue),
   },
   {
     path: 'produit/:ref',
+    canActivate: [orderModeGuard],
     loadComponent: () =>
       import('./_pages/product/product')
         .then(m => m.ProductComponent),
   },
   {
     path: 'box',
+    canActivate: [orderModeGuard],
     loadComponent: () =>
       import('./_pages/box/box')
         .then(m => m.BoxComponent),
   },
   {
     path: 'cart',
+    canActivate: [orderModeGuard],
     loadComponent: () =>
       import('./_pages/cart/cart')
         .then(m => m.CartComponent)

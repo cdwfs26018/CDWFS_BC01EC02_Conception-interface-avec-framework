@@ -18,21 +18,23 @@
       </h1>
 
       <div class="grid grid-cols-1 gap-6">
+
         <!-- SUR PLACE -->
         <button
-          (click)="chooseMode('sur_place')"
+          (click)="chooseOnSite()"
           class="w-full py-6 text-xl font-semibold bg-orange-500 text-white rounded-2xl shadow hover:bg-orange-600 transition"
         >
           🍽️ Sur place
         </button>
 
-        <!-- A EMPORTER -->
+        <!-- À EMPORTER -->
         <button
-          (click)="chooseMode('a_emporter')"
+          (click)="chooseTakeAway()"
           class="w-full py-6 text-xl font-semibold bg-gray-800 text-white rounded-2xl shadow hover:bg-gray-900 transition"
         >
           🥡 À emporter
         </button>
+
       </div>
 
     </div>

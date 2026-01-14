@@ -6,4 +6,5 @@ export const environment: Environment = {
   url_json_users: '/json/users.json',
   key_local_storage_mode: 'order_mode',
   key_local_storage_cart: 'cart_data',
+  key_order_mode: 'order_mode',
 };
