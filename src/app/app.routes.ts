@@ -51,6 +51,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./_pages/cart/cart')
         .then(m => m.CartComponent)
+  },
+  {
+    path: 'logout',
+    loadComponent: () =>
+      import('./_pages/logout/logout')
+        .then(m => m.LogoutComponent),
   }
   // {
   //   path: '404',

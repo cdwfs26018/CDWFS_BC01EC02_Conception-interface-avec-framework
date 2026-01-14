@@ -3,11 +3,13 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../services/login';
 import { UserInterface } from '../../models/user';
+import { HeaderComponent } from '../../_components/header/header';
+import { FooterComponent } from '../../_components/footer/footer';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './account.html',
   styleUrl: './account.less'
 })
