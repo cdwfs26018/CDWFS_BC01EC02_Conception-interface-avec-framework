@@ -48,7 +48,10 @@
     <div class="grid grid-cols-2 gap-4">
 
       @for (product of filteredProducts(); track product.reference_produit) {
-        <div class="bg-white rounded-xl shadow p-4 relative">
+        <div
+          class="bg-white rounded-xl shadow p-4 relative cursor-pointer"
+          (click)="goToProduct(product)"
+        >
 
           <img
             [src]="getImage(product)"
@@ -68,7 +71,7 @@
           </p>
 
           <button
-            (click)="addToCart(product)"
+            (click)="addToCart(product); $event.stopPropagation()"
             class="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-orange-500 text-white text-xl"
           >
             +

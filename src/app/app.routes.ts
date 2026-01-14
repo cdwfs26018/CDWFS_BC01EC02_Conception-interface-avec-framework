@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import {authGuard} from './guards/auth-guard';
+import {ProductComponent} from './_pages/product/product';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,12 @@ export const routes: Routes = [
       import('./_pages/catalogue/catalogue')
         .then(m => m.Catalogue),
   },
+  {
+    path: 'produit/:ref',
+    loadComponent: () =>
+      import('./_pages/product/product')
+        .then(m => m.ProductComponent),
+  }
   // {
   //   path: '404',
   //   loadComponent: () =>

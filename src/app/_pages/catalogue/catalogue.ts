@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { CatalogueService } from '../../services/catalogue.service';
 import { Product } from '../../models/product';
 import { Category } from '../../models/category';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue',
@@ -13,6 +14,7 @@ import { Category } from '../../models/category';
 })
 export class Catalogue {
   private service = inject(CatalogueService);
+  private router = inject(Router);
 
   categories: Category[] = [];
   products: Product[] = [];
@@ -53,5 +55,12 @@ export class Catalogue {
     return product.reference_image
       ? `/imgs/products/${product.reference_image}`
       : '/imgs/products/placeholder.png';
+  }
+
+  goToProduct(product: Product): void {
+    this.router.navigate([
+      '/produit',
+      product.reference_produit
+    ]);
   }
 }
