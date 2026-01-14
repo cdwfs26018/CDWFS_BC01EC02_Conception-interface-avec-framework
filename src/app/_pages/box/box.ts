@@ -2,11 +2,13 @@ import {Component, inject, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product';
 import { CatalogueService } from '../../services/catalogue.service';
+import {HeaderComponent} from '../../_components/header/header';
+import {FooterComponent} from '../../_components/footer/footer';
 
 @Component({
   selector: 'app-box',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './box.html',
   styleUrls: ['./box.less'],
 })

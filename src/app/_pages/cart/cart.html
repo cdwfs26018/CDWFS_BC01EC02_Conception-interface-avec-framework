@@ -1,11 +1,6 @@
-<div class="min-h-screen flex flex-col bg-gray-100">
+<app-header></app-header>
 
-  <!-- HEADER -->
-  <header class="h-20 flex items-center justify-center bg-white shadow">
-    <img src="/logo.png" class="h-10" alt="Logo" />
-  </header>
-
-  <main class="flex-1 px-6 py-6">
+<main class="flex-1 px-6 py-6">
 
     <h1 class="text-2xl font-bold mb-6">Mon panier</h1>
 
@@ -87,14 +82,5 @@
 
     }
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="h-20 bg-white shadow flex justify-around items-center">
-    <button (click)="goCatalogue()">📋</button>
-    <button (click)="router.navigate(['/box'])">📦</button>
-    <button (click)="goLogin()">👤</button>
-    <button>🛒</button>
-  </footer>
-
-</div>
+</main>
+<app-footer></app-footer>
