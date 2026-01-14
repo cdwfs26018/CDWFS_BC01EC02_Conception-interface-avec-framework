@@ -1,38 +1,33 @@
 <footer class="h-20 bg-white shadow flex justify-around items-center">
 
+  <!-- Catalogue -->
   <button (click)="go('/catalogue')" class="flex flex-col items-center">
-    <lucide-icon
-      [img]="icons.catalogue"
-      size="24"
-      strokeWidth="1.8"
-    />
+    <lucide-icon [img]="icons.catalogue" size="24" />
     <span class="text-xs mt-1">Catalogue</span>
   </button>
 
+  <!-- Box -->
   <button (click)="go('/box')" class="flex flex-col items-center">
-    <lucide-icon
-      [img]="icons.box"
-      size="24"
-      strokeWidth="1.8"
-    />
+    <lucide-icon [img]="icons.box" size="24" />
     <span class="text-xs mt-1">Ma boîte</span>
   </button>
 
-  <button (click)="go('/account')" class="flex flex-col items-center">
-    <lucide-icon
-      [img]="icons.account"
-      size="24"
-      strokeWidth="1.8"
-    />
-    <span class="text-xs mt-1">Compte</span>
-  </button>
+  <!-- LOGIN / LOGOUT -->
+  @if (!loginService.isLog()) {
+    <button (click)="go('/login')" class="flex flex-col items-center">
+      <lucide-icon [img]="icons.login" size="24" />
+      <span class="text-xs mt-1">Connexion</span>
+    </button>
+  } @else {
+    <button (click)="go('/logout')" class="flex flex-col items-center">
+      <lucide-icon [img]="icons.logout" size="24" />
+      <span class="text-xs mt-1">Déconnexion</span>
+    </button>
+  }
 
+  <!-- Panier -->
   <button (click)="go('/cart')" class="flex flex-col items-center">
-    <lucide-icon
-      [img]="icons.cart"
-      size="24"
-      strokeWidth="1.8"
-    />
+    <lucide-icon [img]="icons.cart" size="24" />
     <span class="text-xs mt-1">Panier</span>
   </button>
 

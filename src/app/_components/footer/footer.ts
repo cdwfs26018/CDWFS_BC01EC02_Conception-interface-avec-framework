@@ -1,12 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login';
 import {
   LucideAngularModule,
   BookOpen,
   Package,
   User,
-  ShoppingCart
+  ShoppingCart,
+  LogOut
 } from 'lucide-angular';
 
 @Component({
@@ -17,15 +19,17 @@ import {
 })
 export class FooterComponent {
   private router = inject(Router);
+  loginService = inject(LoginService);
 
   icons = {
     catalogue: BookOpen,
     box: Package,
-    account: User,
+    login: User,
+    logout: LogOut,
     cart: ShoppingCart,
   };
 
-  go(path: string) {
+  go(path: string): void {
     this.router.navigate([path]);
   }
 }
