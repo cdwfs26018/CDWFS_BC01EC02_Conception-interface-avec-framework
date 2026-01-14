@@ -5,4 +5,5 @@ export const environment: Environment = {
   key_local_storage_user: 'user_data',
   url_json_users: '/json/users.json',
   key_local_storage_mode: 'order_mode',
+  key_local_storage_cart: 'cart_data',
 };
