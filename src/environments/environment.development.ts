@@ -7,4 +7,6 @@ export const environment: Environment = {
   key_local_storage_mode: 'order_mode',
   key_local_storage_cart: 'cart_data',
   key_order_mode: 'order_mode',
+  authApi: 'https://reqres.in/api',
+  authApiKey: 'CLE_API_ICI',
 };

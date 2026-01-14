@@ -1,38 +1,30 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LoginService } from '../../services/login';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import {HeaderComponent} from '../../_components/header/header';
-import {FooterComponent} from '../../_components/footer/footer';
+import { AuthService } from '../../services/auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, HeaderComponent, FooterComponent],
-  templateUrl: './login.html',
-  styleUrls: ['./login.less'],
   standalone: true,
+  imports: [FormsModule, RouterModule],
+  templateUrl: './login.html',
 })
 export class Login {
-  protected username: string = '';
-  protected password: string = '';
-  private loginService = inject(LoginService);
+  email = '';
+  password = '';
+
+  private auth = inject(AuthService);
   private router = inject(Router);
 
-  async loginSite(): Promise<void> {
-    const isLog: boolean = await this.loginService.login(
-      this.username,
-      this.password
-    );
+  async submit(): Promise<void> {
+    const ok = await this.auth.login(this.email, this.password);
 
-    if (isLog) {
+    if (ok) {
       this.router.navigate(['/account']);
     } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Erreur',
-        text: "Nom d'utilisateur ou mot de passe incorrect",
-      });
+      Swal.fire('Erreur', 'Identifiants incorrects', 'error');
     }
   }
 }

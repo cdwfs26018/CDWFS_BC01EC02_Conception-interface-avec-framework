@@ -13,7 +13,7 @@
   </button>
 
   <!-- LOGIN / LOGOUT -->
-  @if (!loginService.isLog()) {
+  @if (!loginService.isAuth()) {
     <button (click)="go('/login')" class="flex flex-col items-center">
       <lucide-icon [img]="icons.login" size="24" />
       <span class="text-xs mt-1">Connexion</span>

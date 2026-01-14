@@ -6,13 +6,11 @@ import { CatalogueService } from '../../services/catalogue.service';
 import { Product } from '../../models/product';
 import { Category } from '../../models/category';
 import { Collection } from '../../models/collection';
-import {HeaderComponent} from '../../_components/header/header';
-import {FooterComponent} from '../../_components/footer/footer';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule],
   templateUrl: './product.html',
 })
 export class ProductComponent {

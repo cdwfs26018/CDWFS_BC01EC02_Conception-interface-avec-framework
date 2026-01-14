@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login';
+import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { OrderService } from '../../services/order.service';
 
@@ -11,13 +11,13 @@ import { OrderService } from '../../services/order.service';
 })
 export class LogoutComponent {
   private router = inject(Router);
-  private loginService = inject(LoginService);
+  private loginService = inject(AuthService);
   private cartService = inject(CartService);
   private orderService = inject(OrderService);
 
   ngOnInit(): void {
     // ️déconnexion utilisateur
-    this.loginService.logOut();
+    this.loginService.logout();
 
     // ️vider le panier
     this.cartService.clear();

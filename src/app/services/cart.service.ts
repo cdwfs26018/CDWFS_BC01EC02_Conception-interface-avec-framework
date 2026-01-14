@@ -1,6 +1,6 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { Product } from '../models/product';
-import { LoginService } from './login';
+import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
 
 export interface CartItem {
@@ -12,7 +12,7 @@ export interface CartItem {
   providedIn: 'root',
 })
 export class CartService {
-  private loginService = inject(LoginService);
+  private loginService = inject(AuthService);
   private readonly CART_KEY = environment.key_local_storage_cart;
 
   constructor() {
@@ -32,7 +32,7 @@ export class CartService {
 
   // réduction 2% si loggé
   discountRate = computed(() =>
-    this.loginService.isLog() ? 0.02 : 0
+    this.loginService.isAuth() ? 0.02 : 0
   );
 
   totalWithDiscount = computed(() =>

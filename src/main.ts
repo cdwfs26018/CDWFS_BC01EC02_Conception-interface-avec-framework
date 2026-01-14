@@ -6,4 +6,4 @@ import { App } from './app/app';
 bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));
 
-// console.log(hashPassword('Alexis94170.'));
+// console.log(hashPassword('cityslicka'));

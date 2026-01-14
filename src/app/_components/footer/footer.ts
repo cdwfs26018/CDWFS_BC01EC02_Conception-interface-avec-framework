@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login';
 import {
   LucideAngularModule,
   BookOpen,
@@ -10,6 +9,7 @@ import {
   ShoppingCart,
   LogOut
 } from 'lucide-angular';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -19,7 +19,7 @@ import {
 })
 export class FooterComponent {
   private router = inject(Router);
-  loginService = inject(LoginService);
+  loginService = inject(AuthService);
 
   icons = {
     catalogue: BookOpen,
