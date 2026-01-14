@@ -1,0 +1,41 @@
+<div class="min-h-screen flex flex-col bg-gray-100">
+
+  <!-- HEADER -->
+  <header class="h-20 flex items-center justify-center bg-white shadow">
+    <img
+      src="/logo.png"
+      alt="Logo"
+      class="h-10"
+    />
+  </header>
+
+  <!-- CONTENT -->
+  <main class="flex-1 flex items-center justify-center px-6">
+    <div class="w-full max-w-lg text-center">
+
+      <h1 class="text-3xl font-bold text-gray-800 mb-10">
+        Comment souhaitez-vous consommer ?
+      </h1>
+
+      <div class="grid grid-cols-1 gap-6">
+        <!-- SUR PLACE -->
+        <button
+          (click)="chooseMode('sur_place')"
+          class="w-full py-6 text-xl font-semibold bg-orange-500 text-white rounded-2xl shadow hover:bg-orange-600 transition"
+        >
+          🍽️ Sur place
+        </button>
+
+        <!-- A EMPORTER -->
+        <button
+          (click)="chooseMode('a_emporter')"
+          class="w-full py-6 text-xl font-semibold bg-gray-800 text-white rounded-2xl shadow hover:bg-gray-900 transition"
+        >
+          🥡 À emporter
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+</div>
