@@ -1,20 +1,24 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-home',
-  imports: [],
   standalone: true,
   templateUrl: './home.html',
   styleUrl: './home.less',
 })
 export class Home {
   private router = inject(Router);
-  private readonly MODE_KEY = environment.key_local_storage_mode;
+  private orderService = inject(OrderService);
 
-  chooseMode(mode: 'sur_place' | 'a_emporter'): void {
-    localStorage.setItem(this.MODE_KEY, mode);
+  chooseOnSite(): void {
+    this.orderService.setMode('sur_place');
+    this.router.navigate(['/catalogue']);
+  }
+
+  chooseTakeAway(): void {
+    this.orderService.setMode('a_emporter');
     this.router.navigate(['/catalogue']);
   }
 }

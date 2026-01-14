@@ -5,6 +5,7 @@ import { CatalogueService } from '../../services/catalogue.service';
 import { Product } from '../../models/product';
 import { Category } from '../../models/category';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class Catalogue {
   private service = inject(CatalogueService);
+  private cartService = inject(CartService);
   private router = inject(Router);
 
   categories: Category[] = [];
@@ -42,15 +44,16 @@ export class Catalogue {
   }
 
   addToCart(product: Product): void {
+    this.cartService.add(product);
+
     Swal.fire({
       icon: 'success',
       title: 'Ajouté au panier',
       text: product.nom,
-      timer: 1200,
+      timer: 1000,
       showConfirmButton: false,
     });
   }
-
   getImage(product: Product): string {
     return product.reference_image
       ? `/imgs/products/${product.reference_image}`
