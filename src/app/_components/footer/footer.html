@@ -1,8 +1,39 @@
 <footer class="h-20 bg-white shadow flex justify-around items-center">
 
-  <button (click)="go('/catalogue')">📋</button>
-  <button (click)="go('/box')">📦</button>
-  <button (click)="go('/account')">👤</button>
-  <button (click)="go('/cart')">🛒</button>
+  <button (click)="go('/catalogue')" class="flex flex-col items-center">
+    <lucide-icon
+      [img]="icons.catalogue"
+      size="24"
+      strokeWidth="1.8"
+    />
+    <span class="text-xs mt-1">Catalogue</span>
+  </button>
+
+  <button (click)="go('/box')" class="flex flex-col items-center">
+    <lucide-icon
+      [img]="icons.box"
+      size="24"
+      strokeWidth="1.8"
+    />
+    <span class="text-xs mt-1">Ma boîte</span>
+  </button>
+
+  <button (click)="go('/account')" class="flex flex-col items-center">
+    <lucide-icon
+      [img]="icons.account"
+      size="24"
+      strokeWidth="1.8"
+    />
+    <span class="text-xs mt-1">Compte</span>
+  </button>
+
+  <button (click)="go('/cart')" class="flex flex-col items-center">
+    <lucide-icon
+      [img]="icons.cart"
+      size="24"
+      strokeWidth="1.8"
+    />
+    <span class="text-xs mt-1">Panier</span>
+  </button>
 
 </footer>
