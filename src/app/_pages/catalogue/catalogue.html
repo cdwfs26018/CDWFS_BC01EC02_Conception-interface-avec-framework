@@ -1,1 +1,79 @@
-<p>catalogue works!</p>
+
+  <!-- CATEGORIES -->
+  <div class="bg-white px-4 py-3 overflow-x-auto">
+    <div class="flex gap-3">
+
+      <!-- TOUS -->
+      <button
+        (click)="selectCategory(0, 'Tous')"
+        class="px-4 py-2 rounded-full border text-sm font-medium"
+        [ngClass]="{
+          'bg-orange-500 text-white': selectedCategoryId() === 0,
+          'bg-gray-100': selectedCategoryId() !== 0
+        }"
+      >
+        Tous
+      </button>
+
+      <!-- AUTRES CATEGORIES -->
+      @for (cat of categories; track cat.id) {
+        <button
+          (click)="selectCategory(cat.id, cat.titre)"
+          class="px-4 py-2 rounded-full border text-sm font-medium whitespace-nowrap"
+          [ngClass]="{
+            'bg-orange-500 text-white': selectedCategoryId() === cat.id,
+            'bg-gray-100': selectedCategoryId() !== cat.id
+          }"
+        >
+          {{ cat.titre }}
+        </button>
+      }
+
+    </div>
+  </div>
+
+  <!-- TITRE -->
+  <h2 class="text-xl font-semibold px-6 py-4">
+    {{ selectedCategoryTitle() }}
+  </h2>
+
+  <!-- PRODUITS -->
+  <main class="flex-1 px-6 pb-24">
+    <div class="grid grid-cols-2 gap-4">
+
+      @for (product of filteredProducts(); track product.reference_produit) {
+        <div
+          class="bg-white rounded-xl shadow p-4 relative cursor-pointer"
+          (click)="goToProduct(product)"
+        >
+
+          <img
+            [src]="getImage(product)"
+            class="w-full h-28 object-contain mb-3"
+          />
+
+          <h3 class="font-semibold text-sm">
+            {{ product.nom }}
+          </h3>
+
+          <p class="text-xs text-gray-500">
+            {{ product.nombre_pieces }} pièces
+          </p>
+
+          <p class="font-bold mt-2">
+            {{ product.prix_lot | number:'1.2-2' }} €
+          </p>
+
+          <button
+            (click)="addToCart(product); $event.stopPropagation()"
+            class="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-orange-500 text-white text-xl"
+          >
+            +
+          </button>
+
+        </div>
+      }
+
+    </div>
+  </main>
+

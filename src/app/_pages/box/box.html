@@ -1,0 +1,54 @@
+
+<main class="min-h-screen flex flex-col bg-gray-100">
+
+  <!-- CONTENU -->
+  <main class="flex-1 flex flex-col items-center justify-center gap-10">
+
+    <!-- BOITE ISOMETRIQUE -->
+    <div class="box-container">
+      <div class="isometric-box" [ngClass]="boxClass">
+
+        <div class="face front"></div>
+        <div class="face back"></div>
+
+        <div class="face section1x"></div>
+        <div class="face section1y"></div>
+        <div class="face section2x"></div>
+        <div class="face section2y"></div>
+
+        <!-- MAKIS DANS LA BOITE -->
+        @for (product of boxProducts(); track product.reference_produit; let i = $index) {
+          <img
+            [src]="'/imgs/products/' + product.reference_image"
+            class="maki"
+            [ngClass]="'maki-' + (i + 1)"
+            (click)="removeFromBox(i)"
+          />
+        }
+
+        <div class="face right"></div>
+        <div class="face left"></div>
+        <div class="face bottom"></div>
+      </div>
+    </div>
+
+    <!-- LISTE PRODUITS -->
+    <div class="flex gap-4 flex-wrap justify-center px-6">
+      @for (product of products(); track product.reference_produit) {
+        <button
+          class="bg-white px-4 py-2 rounded shadow text-sm cursor-pointer"
+          (click)="addToBox(product)"
+        >
+          {{ product.nom }}
+        </button>
+      }
+    </div>
+    <p class="text-gray-600 text-sm text-center mb-4">
+      Cliquez sur un produit pour l’ajouter à votre boîte.<br />
+      Cliquez sur un maki dans la boîte pour le retirer.
+    </p>
+
+  </main>
+
+</main>
+

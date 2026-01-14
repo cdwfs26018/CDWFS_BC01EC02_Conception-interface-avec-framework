@@ -10,5 +10,17 @@
     "city": "Paris",
     "address": "12 Rue du Test",
     "postalCode": "75001"
+  },
+  {
+    "id": 2,
+    "firstName": "Eve",
+    "lastName": "Holt",
+    "email": "eve.holt@reqres.in",
+    "password": "$2b$10$it.GGFzLLkyBmYX0Z3MRg.nqWURqFCSFCz8MD8ZrtyhM7BgH.BXlK",
+    "username": "eveholt",
+    "country": "France",
+    "city": "Paris",
+    "address": "12 Rue du Test",
+    "postalCode": "75001"
   }
 ]

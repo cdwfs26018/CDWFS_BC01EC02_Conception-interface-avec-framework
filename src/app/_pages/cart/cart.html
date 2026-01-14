@@ -1,0 +1,88 @@
+
+
+<main class="flex-1 px-6 py-6">
+
+    <h1 class="text-2xl font-bold mb-6">Mon panier</h1>
+
+    @if (cart.items().length === 0) {
+      <p class="text-gray-500">Votre panier est vide</p>
+    } @else {
+
+      <div class="space-y-4">
+
+        @for (item of cart.items(); track item.product.reference_produit) {
+          <div class="bg-white rounded-lg p-4 shadow flex justify-between items-center">
+
+            <div>
+              <p class="font-semibold">{{ item.product.nom }}</p>
+              <p class="text-sm text-gray-500">
+                {{ item.product.prix_lot | number:'1.2-2' }} €
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button
+                class="px-3 py-1 bg-gray-200 rounded"
+                (click)="cart.decrease(item.product)"
+              >
+                −
+              </button>
+
+              <span>{{ item.quantity }}</span>
+
+              <button
+                class="px-3 py-1 bg-gray-200 rounded"
+                (click)="cart.increase(item.product)"
+              >
+                +
+              </button>
+
+              <button
+                class="text-red-500 ml-2"
+                (click)="cart.remove(item.product)"
+              >
+                ✕
+              </button>
+            </div>
+
+          </div>
+        }
+
+      </div>
+
+      <div class="mt-8 bg-white rounded-lg p-4 shadow space-y-2">
+        <p>Total : {{ cart.total() | number:'1.2-2' }} €</p>
+
+        @if (cart.discountRate() > 0) {
+          <p class="text-green-600">
+            Réduction fidélité : −2%
+          </p>
+        }
+
+        <p class="font-bold text-lg">
+          Total à payer :
+          {{ cart.totalWithDiscount() | number:'1.2-2' }} €
+        </p>
+      </div>
+
+      <div class="mt-6 space-y-3">
+        @if (!auth.isAuth()) {
+          <button
+            class="w-full bg-gray-800 text-white py-3 rounded-lg"
+            (click)="goLogin()"
+          >
+            Se connecter
+          </button>
+        }
+
+        <button
+          class="w-full bg-orange-500 text-white py-3 rounded-lg"
+        >
+          Commander
+        </button>
+      </div>
+
+    }
+
+</main>
+

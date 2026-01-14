@@ -1,0 +1,12 @@
+<header class="h-16 bg-white shadow flex items-center justify-around">
+
+  <img src="/logo.png" class="h-10" alt="Logo" />
+
+  @if (showMode && orderService.orderMode()) {
+    <span class="text-sm text-gray-500">
+      Mode :
+      {{ orderService.orderMode() | orderModeLabel }}
+    </span>
+  }
+
+</header>
