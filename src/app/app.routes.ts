@@ -35,6 +35,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./_pages/product/product')
         .then(m => m.ProductComponent),
+  },
+  {
+    path: 'box',
+    loadComponent: () =>
+      import('./_pages/box/box')
+        .then(m => m.BoxComponent),
   }
   // {
   //   path: '404',
