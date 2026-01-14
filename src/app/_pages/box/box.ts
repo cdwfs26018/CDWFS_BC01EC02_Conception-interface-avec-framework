@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product';
 import { CatalogueService } from '../../services/catalogue.service';
@@ -11,21 +11,18 @@ import { CatalogueService } from '../../services/catalogue.service';
   styleUrls: ['./box.less'],
 })
 export class BoxComponent {
-  products: Product[] = [];
+  private catalogueService = inject(CatalogueService);
+  products = signal<Product[]>([]);
   boxProducts = signal<Product[]>([]);
 
-  constructor(private catalogueService: CatalogueService) {}
-
   async ngOnInit() {
-    this.products = await this.catalogueService.getProducts();
+    const data = await this.catalogueService.getProducts();
+    this.products.set(data);
   }
 
   addToBox(product: Product): void {
-    const current = this.boxProducts();
-
-    if (current.length >= 9) return;
-
-    this.boxProducts.set([...current, product]);
+    if (this.boxProducts().length >= 9) return;
+    this.boxProducts.set([...this.boxProducts(), product]);
   }
 
   removeFromBox(index: number): void {

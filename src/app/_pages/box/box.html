@@ -38,7 +38,7 @@
 
     <!-- LISTE PRODUITS -->
     <div class="flex gap-4 flex-wrap justify-center px-6">
-      @for (product of products; track product.reference_produit) {
+      @for (product of products(); track product.reference_produit) {
         <button
           class="bg-white px-4 py-2 rounded shadow text-sm"
           (click)="addToBox(product)"
@@ -47,6 +47,10 @@
         </button>
       }
     </div>
+    <p class="text-gray-600 text-sm text-center mb-4">
+      Cliquez sur un produit pour l’ajouter à votre boîte.<br />
+      Cliquez sur un maki dans la boîte pour le retirer.
+    </p>
 
   </main>
 
